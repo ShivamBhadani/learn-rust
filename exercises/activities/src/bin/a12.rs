@@ -11,15 +11,15 @@
 // * Implement functionality on the box struct to print the characteristics
 enum Color {
     Brown,
-    Black,
-    White,
+    _Black,
+    _White,
 }
 impl Color{
     fn print(&self){
         match self {
             Color::Brown => println!("Brown"),
-            Color::Black => println!("Black"),
-            Color::White => println!("White"),
+            Color::_Black => println!("Black"),
+            Color::_White => println!("White"),
         }
     }
 }
