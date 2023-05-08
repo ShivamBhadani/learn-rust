@@ -22,4 +22,38 @@
 // * Print whether the employee may access the building
 //   * Must use a function that utilizes the question mark operator to do this
 
-fn main() {}
+
+
+enum EmployeeType {
+    Maintenance,
+    Marketing,
+    Manager,
+    Supervisor,
+    Kitchen,
+    Assembly,
+}
+
+struct Employee {
+    employee_type: EmployeeType,
+    employed: bool,
+}
+
+fn access_building(employee: &Employee) -> Result<(), String> {
+    match employee.employee_type {
+        EmployeeType::Maintenance => Ok(()),
+        EmployeeType::Marketing => Ok(()),
+        EmployeeType::Manager => Ok(()),
+        _ => Err(String::from("Employee cannot access building")),
+    }
+}
+
+fn main() {
+    let employee = Employee {
+        employee_type: EmployeeType::Maintenance,
+        employed: true,
+    };
+    match access_building(&employee) {
+        Ok(()) => println!("Employee may access building"),
+        Err(err) => println!("Employee may not access building: {}", err),
+    }
+}
