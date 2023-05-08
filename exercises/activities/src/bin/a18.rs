@@ -11,4 +11,27 @@
 // * Return a result from the function
 // * The Err variant should detail the reason why they cannot make a purchase
 
-fn main() {}
+
+struct Customer {
+    age: u32,
+}
+
+fn can_purchase(customer: &Customer) -> Result<(), String> {
+    if customer.age >= 21 {
+        Ok(())
+    } else {
+        Err(String::from("Customer is not old enough"))
+    }
+}
+
+
+
+fn main() {
+    let customer = Customer { age: 20 };
+    match can_purchase(&customer) {
+        Ok(()) => println!("Can purchase"),
+        Err(err) => println!("Cannot purchase: {}", err),
+    }
+
+}
+ 
