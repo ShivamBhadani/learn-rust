@@ -26,23 +26,23 @@
 
 enum EmployeeType {
     Maintenance,
-    Marketing,
-    Manager,
-    Supervisor,
-    Kitchen,
-    Assembly,
+    _Marketing,
+    _Manager,
+    _Supervisor,
+    _Kitchen,
+    _Assembly,
 }
 
 struct Employee {
     employee_type: EmployeeType,
-    employed: bool,
+    _employed: bool,
 }
 
 fn access_building(employee: &Employee) -> Result<(), String> {
     match employee.employee_type {
         EmployeeType::Maintenance => Ok(()),
-        EmployeeType::Marketing => Ok(()),
-        EmployeeType::Manager => Ok(()),
+        EmployeeType::_Marketing => Ok(()),
+        EmployeeType::_Manager => Ok(()),
         _ => Err(String::from("Employee cannot access building")),
     }
 }
@@ -50,7 +50,7 @@ fn access_building(employee: &Employee) -> Result<(), String> {
 fn main() {
     let employee = Employee {
         employee_type: EmployeeType::Maintenance,
-        employed: true,
+        _employed: true,
     };
     match access_building(&employee) {
         Ok(()) => println!("Employee may access building"),
