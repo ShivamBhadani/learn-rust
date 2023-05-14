@@ -10,8 +10,8 @@
 
 #[derive(Debug)]
 struct User {
-    user_id: i32,
-    name: String,
+    _user_id: i32,
+    _name: String,
 }
 
 /// Locates a user id based on the name.
@@ -25,4 +25,10 @@ fn find_user(name: &str) -> Option<i32> {
     }
 }
 
-fn main() {}
+fn main() {
+    let user_id = find_user("sam").map(|id| id);
+    match user_id {
+        Some(id) => println!("User: {:?}", User { _user_id: id, _name: String::from("sam") }),
+        None => println!("User not found"),
+    }
+}
